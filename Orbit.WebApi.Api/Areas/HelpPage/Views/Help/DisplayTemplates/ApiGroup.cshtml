@@ -1,0 +1,84 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using Orbit.WebApi.Api.Areas.HelpPage
+@using Orbit.WebApi.Api.Areas.HelpPage.Models
+@model IGrouping<HttpControllerDescriptor, ApiDescription>
+
+@{
+    var controllerDocumentation = ViewBag.DocumentationProvider != null ?
+        ViewBag.DocumentationProvider.GetDocumentation(Model.Key) :
+        null;
+}
+
+<h2 id="@Model.Key.ControllerName">@Model.Key.ControllerName</h2>
+@if (!String.IsNullOrEmpty(controllerDocumentation))
+{
+    <p>@controllerDocumentation</p>
+}
+<table class="help-page-table">
+    <tbody>
+        @foreach (var api in Model)
+            {
+            <tr>
+                <td class="api-name">
+                    @{
+                        var _action = Url.Action("Api", "Help", new { apiId = api.GetFriendlyId() }).ToString();
+                    }
+                    <div class="input-group">
+                        @switch (api.HttpMethod.Method)
+                        {
+                            case "GET":
+                                {
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" onclick="ClickAction('@_action')" type="button">@api.HttpMethod.Method</button>
+                                    </span>
+                                        <label onclick="ClickAction('@_action')" style="max-width:100%;  background-color: #e7f0f7;border: 1px solid #c3d9ec; font-weight:bolder !important" class="form-control">@api.RelativePath</label>
+                                    break;
+                                }
+                            case "POST":
+                                {
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" onclick="ClickAction('@_action')" type="button">@api.HttpMethod.Method</button>
+                                    </span>
+                                        <label onclick="ClickAction('@_action')" style="max-width:100%;  background-color: #e7f6ec;border: 1px solid #c3e8d1; font-weight:bolder !important" class="form-control">@api.RelativePath</label>
+                                    break;
+                                }
+                            case "DELETE":
+                                {
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" onclick="ClickAction('@_action')" type="button">@api.HttpMethod.Method</button>
+                                    </span>
+                                        <label onclick="ClickAction('@_action')" style="max-width:100%; background-color: #f5e8e8;border: 1px solid #e8c6c7; font-weight:bold" class="form-control">@api.RelativePath</label>
+                                    break;
+                                }
+                            case "PUT":
+                                {
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-warning" onclick="ClickAction('@_action')" type="button">@api.HttpMethod.Method</button>
+                                    </span>
+                                        <label onclick="ClickAction('@_action')" style="max-width:100%; background-color: #f9f2e9;border: 1px solid #f0e0ca; font-weight:bold" class="form-control">@api.RelativePath</label>
+                                    break;
+                                }
+                            default:
+                                {
+                                    <span class="input-group-btn">
+
+                                        <button class="btn btn-danger" onclick="@Url.Action("Api", "Help", new { apiId = api.GetFriendlyId() })" type="button" id="addressSearch">@api.HttpMethod.Method</button>
+                                    </span>
+                                        <label onclick="ClickAction('@_action')" style="max-width:100%" class="form-control">@api.HttpMethod.Method @api.RelativePath</label>
+                                    break;
+                                }
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+
+    function ClickAction(action) {
+        window.location = action;
+    }
+</script>

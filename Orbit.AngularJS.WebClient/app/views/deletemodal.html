@@ -1,0 +1,10 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Delete Order[{{ vm.order.OrderID }}]?</h3>
+</div>
+<div class="modal-body">
+    Are you sure you want to delete the order {{ vm.order.OrderID }}?
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="$close()">Cancel</button>
+    <button class="btn btn-danger" ng-click="vm.deleteOrder()">Delete</button>
+</div>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    string BaseUri = System.Configuration.ConfigurationManager.AppSettings["BaseUri"].ToString();
+    string ChatBaseUri = System.Configuration.ConfigurationManager.AppSettings["ChatBaseUri"].ToString();
+    string ChatBasePath = System.Configuration.ConfigurationManager.AppSettings["ChatBasePath"].ToString();
+    string ApiServiceBaseUri = System.Configuration.ConfigurationManager.AppSettings["ApiServiceBaseUri"].ToString();
+    string Version = System.Configuration.ConfigurationManager.AppSettings["Version"].ToString();
+}
+
+<div style="display:none">
+    <input type="hidden" id="BASEURI" value="@BaseUri" />
+    <input type="hidden" id="CHATBASEURI" value="@ChatBaseUri" />
+    <input type="hidden" id="CHATBASEPATH" value="@ChatBasePath" />
+    <input type="hidden" id="APISERVICEBASEURI" value="@ApiServiceBaseUri" />
+    <input type="hidden" id="VERSION" value="@Version" />
+</div>
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="page-header text-center">
+            <h2>MVC AngularJS Authentication(With Orbit Framework)</h2>
+        </div>
+        <p>AngularJS Application which uses OAuth Bearer Token for authentication and implements Refresh Tokens.</p>
+        <p>The backend API is built using <strong>Orbit</strong> Web API 2.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div data-ng-view="">
+    </div>
+</div>

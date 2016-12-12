@@ -1,0 +1,128 @@
+﻿/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    padding-top: 40px;
+    xpadding-bottom: 10px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.text-muted {
+    margin: 20px 0;
+}
+
+.form-login {
+    max-width: 330px;
+    padding: 0px 15px 5px 15px;
+    margin: 0 auto;
+}
+
+    .form-login .form-login-heading {
+        margin-bottom: 10px;
+    }
+
+    .form-login .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+        .form-login .form-control:focus {
+            z-index: 2;
+        }
+
+    .form-login input[type="password"] {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.chatcontainer {
+    background-color: #101010;
+    border: thick solid #808080;
+    padding: 20px;
+}
+
+    .chatcontainer .row {
+        margin: 0px;
+    }
+
+.timer {
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+    width: 100%;
+}
+
+.countdown {
+    display: none;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.circleBase {
+    display: none;
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.type1 {
+    width: 80px;
+    height: 80px;
+    background: #808080;
+    border: 2px solid #ffffff;
+    float: right;
+}
+
+    .type1 > div:first-child {
+        padding-top: 25px;
+    }
+
+.onlineCount {
+    float: left;
+    color: #4faa4f;
+}
+
+li.online {
+    color: #4faa4f;
+}
+
+li.offline {
+    color: #e14848;
+}
+
+li.ping {
+    color: #f0f017;
+}
+
+.welcome {
+    color: #ffffff;
+    float: right;
+}
+
+.message .odd {
+    float: left;
+}
+
+.message .even {
+    float: right;
+}

@@ -1,0 +1,52 @@
+﻿<div class="chatcontainer">
+    <div class="row">
+        <div class="welcome">
+            <span id="username"></span>
+        </div>
+        <div class="onlineCount"></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <input type="button" class="btn btn-sm btn-default" id="heartbeat" value="Heart Beat" />
+        <input type="button" class="btn btn-sm btn-default" id="sendHelloObject" value="Send Hello" />
+        <input type="button" class="btn btn-sm btn-default" id="groupHandShake" value="Group Handshake" />
+        <input type="button" class="btn btn-sm btn-default" id="toggleTimer" value="Turn On Timer" />
+
+        <select ng-change="data.change(data.model)" class="pull-right input-sm" name="ngvalueselect" ng-model="data.model">
+            <option ng-repeat="option in data.availableOptions" value="{{option.SecurityId}}">{{option.Username}}</option>
+        </select>
+
+        <!--<select ng-change="data.change(data.model)" class="pull-right input-sm" ng-options="option as option.Username for option in data.availableOptions" ng-model="data.model"></select>-->
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <input type="text" class="form-control" id="message" />
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <input type="button" class="btn btn-sm btn-primary" id="sendmessage" value="Add Message" />
+        <input type="button" class="btn btn-sm btn-danger" id="disconnect" value="Disconnect" />
+        <input type="button" class="btn btn-sm btn-success" id="reconnect" value="Reconnect" />
+        <input type="hidden" id="displayname" />
+        <input type="hidden" id="groupname" />
+        <input type="hidden" id="chatUser" value="{{data.model}}" />
+        <input type="hidden" id="pingTimer" value="false" />
+    </div>
+</div>
+<div class="chatcontainer">
+    <div class="row message" ng-repeat="history in historyList">
+        <span ng-class-even="'even'" ng-class-odd="'odd'">{{history.Username}}: {{history.Message}}</span>
+    </div>
+</div>
+<div class="chatcontainer">
+    <div class="circleBase type1">
+        <div id="timer" class="timer"></div>
+    </div>
+    <div class="timer countdown">
+        You will be disconnected in
+        <div id="disconnectTimer"></div>
+    </div>
+    <div>
+        <ul id="discussion"></ul>
+    </div>
+</div>
